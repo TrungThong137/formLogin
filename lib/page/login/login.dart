@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:full_app/page/login/footer.dart';
 import 'package:full_app/page/login/header.dart';
 import 'package:full_app/page/login/inputLogin.dart';
 import 'package:full_app/widget/String.dart';
+import 'package:full_app/widget/widget.dart';
 
-import '../../controller/login/footer.dart';
-import '../../widget/widget.dart';
+
 
 class FormLogin extends StatefulWidget {
   const FormLogin({super.key});
@@ -52,7 +53,7 @@ class _FormLoginState extends State<FormLogin> {
                     children: [
                       Row(
                         children: [
-                          const checkBoxWidget(),
+                          const CheckBoxWidget(),
                           textWidget(
                             text:"Remember Password", fontsize: 15.0, 
                             fontWeight: FontWeight.w400,color: Colors.black,
@@ -83,7 +84,7 @@ class _FormLoginState extends State<FormLogin> {
                   textDecoration: null
                 ),
                 
-                const footer()
+                const Footer()
               ],
             ),
           ),

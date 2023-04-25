@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../widget/widget.dart';
+import 'package:full_app/widget/widget.dart';
 
-class footer extends StatelessWidget {
-  const footer({super.key});
+class Footer extends StatelessWidget {
+  const Footer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class footer extends StatelessWidget {
           ],
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 150, left: 170),
+          padding: const EdgeInsets.only(top: 120, left: 170),
           child: InkWell(
             onTap: (){},
             child: Container(

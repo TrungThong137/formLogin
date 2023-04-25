@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:full_app/controller/information_controller.dart';
 import 'package:full_app/widget/String.dart';
+import 'package:full_app/widget/widget.dart';
 import 'package:get/get.dart';
 
-import '../../widget/widget.dart';
+
 
 class InformationLogin extends StatelessWidget {
   const InformationLogin({super.key});

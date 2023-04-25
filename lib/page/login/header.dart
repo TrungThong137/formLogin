@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:full_app/widget/String.dart';
+import 'package:full_app/widget/widget.dart';
 
-import '../../widget/String.dart';
-import '../../widget/widget.dart';
 
 class HeaderLogin extends StatelessWidget {
   const HeaderLogin({super.key, this.onTapLogin, this.onTapRegister});

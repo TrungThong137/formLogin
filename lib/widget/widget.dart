@@ -81,14 +81,14 @@ Widget textFieldWidget({required labelText, required hintText,
   );
 }
 
-class checkBoxWidget extends StatefulWidget {
-  const checkBoxWidget({super.key});
+class CheckBoxWidget extends StatefulWidget {
+  const CheckBoxWidget({super.key});
 
   @override
-  State<checkBoxWidget> createState() => _checkBoxWidgetState();
+  State<CheckBoxWidget> createState() => _CheckBoxWidgetState();
 }
 
-class _checkBoxWidgetState extends State<checkBoxWidget> {
+class _CheckBoxWidgetState extends State<CheckBoxWidget> {
   @override
   Widget build(BuildContext context) {
     return Checkbox(
@@ -117,7 +117,7 @@ Widget buttonSvgWidget({required onTap, required img,required backGround, requir
 Widget imgWidhet({required img, required fit}){
   return Container(
     width: double.infinity,
-    height: 250,
+    height: 230,
     decoration: BoxDecoration(
       image: DecorationImage(
         image: AssetImage(img),

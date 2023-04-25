@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:full_app/widget/String.dart';
+import 'package:full_app/widget/widget.dart';
 
-import '../../widget/String.dart';
-import '../../widget/widget.dart';
+
 
 class InputLogin extends StatelessWidget {
   const InputLogin({super.key, this.onTap});
