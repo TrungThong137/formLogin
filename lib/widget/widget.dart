@@ -89,7 +89,7 @@ Widget textWidget({required text, required fontsize,
 
 Widget textSpanWidget(){
   return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 110, vertical: 10),
+    padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 10),
     child: RichText(
       textAlign: TextAlign.center,
       text:const TextSpan(
@@ -186,7 +186,7 @@ Widget buttonSvgWidget({required onTap, required img,required backGround, requir
 Widget imgWidhet({required img, required fit}){
   return Container(
     width: double.infinity,
-    height: 230,
+    height: 270,
     decoration: BoxDecoration(
       image: DecorationImage(
         image: AssetImage(img),
