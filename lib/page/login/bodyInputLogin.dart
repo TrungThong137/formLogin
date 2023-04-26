@@ -4,8 +4,8 @@ import 'package:full_app/widget/widget.dart';
 
 
 
-class InputLogin extends StatelessWidget {
-  const InputLogin({super.key, this.onTap});
+class BodyInputLogin extends StatelessWidget {
+  const BodyInputLogin({super.key, this.onTap});
   final Function ? onTap;
 
   @override

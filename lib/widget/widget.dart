@@ -6,20 +6,71 @@ import 'package:get/get.dart';
 
 import 'String.dart';
 
-Widget buttonWidget({required onPressed,required child, required icon, required width}){
+Widget titleHeader({required onTapLogin, required onTapRegister}){
+  return Column(
+    children: [
+      textSpanWidget(),
+
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          buttonHeaderWidget(
+            onPressed: (){
+              onTapLogin!();
+            },
+            name: "Login", isLogin: isLogin
+          ),
+          const SizedBox(width: 20,),
+          buttonHeaderWidget(
+            onPressed: (){
+              onTapRegister!();
+            }, 
+            name:"Register", isLogin: !isLogin
+          ),
+        ],
+      ),
+    ],
+  );
+}
+
+Widget buttonWidget({required onPressed,required child, required width}){
   return Container(
     padding: const EdgeInsets.all(10),
-    child: ElevatedButton.icon(onPressed: onPressed, label: child,
+    child: ElevatedButton(onPressed: onPressed, 
+      child: child,
       style: ElevatedButton.styleFrom(
         minimumSize: Size(width, 50),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20)
         ),
         elevation: 0.8,
-        shadowColor: Colors.grey.withOpacity(0.8)
+        shadowColor: Colors.grey.withOpacity(0.8),
       ),
-      icon:icon,
     ),
+  );
+}
+
+Widget buttonIconWidget({required icon, required text, required onPressed, required width}){
+  return ElevatedButton (
+    onPressed: onPressed,
+    style: ElevatedButton.styleFrom(
+      maximumSize: Size(width, 50),
+      minimumSize: const Size(200, 50),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20)
+      ),
+      elevation: 0.8,
+      shadowColor: Colors.grey.withOpacity(0.8)
+    ),
+    
+    child: Row (
+      mainAxisAlignment: MainAxisAlignment.center,
+      children:[
+        icon ,
+        const SizedBox(width: 5),
+        Text(text)
+      ],
+    ) ,
   );
 }
 
@@ -51,18 +102,36 @@ Widget textSpanWidget(){
   );
 }
 
-Widget buttonHeaderWidget({required onPressed, required child,
-   required isLogin}){
+Widget buttonHeaderWidget({required onPressed, required name, required isLogin}){
   return TextButton(
-    onPressed: onPressed, child: child,
-    style: TextButton.styleFrom(
-      textStyle:TextStyle(
-        decoration: isLogin ? TextDecoration.underline : null
+    onPressed: onPressed,
+    child: Text(
+      name ?? '',
+      style: TextStyle(
+          color: isLogin ? Colors.blue : Colors.grey,
+          decoration: isLogin ? TextDecoration.underline : null,
+          fontSize: 20
       ),
-      foregroundColor: isLogin ? Colors.blue : Colors.grey
     ),
   );
 }
+
+
+// Widget buttonHeaderWidget({required onTap,required name, required isLogin}) {
+//   return InkWell(
+//     onTap: () {
+//       onTap!();
+//     },
+//     child: Text(
+//       name ?? '',
+//       style: TextStyle(
+//           color: isLogin ? Colors.blue : Colors.grey,
+//           decoration: isLogin ? TextDecoration.underline : null,
+//           fontSize: 20),
+//     ),
+//   );
+// }
+
 
 Widget textFieldWidget({required labelText, required hintText,
  required obscureText, required errorText, required controller}){
@@ -139,7 +208,47 @@ Widget informationLoginWidget({required lable, required context}){
   );
 }
 
-void inputLogin(){
+void inputRegister({required context}){
+  final informationController=Get.put(InformationController());
+  if(emailController.text.length>6 && emailController.text.contains("@")){
+    isEmail=true;
+  }else{
+    isEmail=false;
+  }
+
+  if(passController.text.length>6){
+    isPass=true;
+  }else{
+    isPass=false;
+  }
+
+  if(nameController.text.length>6){
+    informationController.updateInformation(
+      email: emailController.text.obs,
+      pass: passController.text.obs
+    );
+    isName=true;
+  }else{
+    isName=false;
+  }
+
+  if(passConfirmController.text == informationController.pass.value){
+    isPassCf=true;
+  }else{
+    isPassCf=false;
+  }
+
+  if(isEmail && isPass && isPassCf && isName){
+    informationController.updateInformation(
+      email: emailController.text.obs,
+      pass: passController.text.obs
+    );
+    Navigator.push(context, MaterialPageRoute(
+      builder: (context)=> const InformationLogin()));
+  }
+}
+
+void inputLogin({required context}){
   final informationController=Get.put(InformationController());
   if(emailController.text.length>6 && emailController.text.contains("@")){
     isEmail=true;
@@ -158,6 +267,7 @@ void inputLogin(){
       email: emailController.text.obs,
       pass: passController.text.obs
     );
-    Get.to(const InformationLogin());
+    Navigator.push(context, MaterialPageRoute(
+      builder: (context)=> const InformationLogin()));
   }
 }

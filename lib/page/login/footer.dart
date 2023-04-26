@@ -27,9 +27,9 @@ class Footer extends StatelessWidget {
               img: "assets/instagram.svg", width: 27.0
             ),
             buttonSvgWidget(
-              onTap: (){},
-              backGround: Colors.red,
-              img: "assets/p.svg", width: 15.0
+              onTap: (){}, 
+              img: "assets/p.svg", backGround: Colors.red, 
+              width: 27.0
             ),
             buttonSvgWidget(
               onTap: (){},

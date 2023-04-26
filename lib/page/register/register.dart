@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:full_app/page/login/footer.dart';
-import 'package:full_app/page/login/bodyInputLogin.dart';
-import 'package:full_app/page/register/register.dart';
+import 'package:full_app/page/login/login.dart';
 import 'package:full_app/widget/String.dart';
 import 'package:full_app/widget/widget.dart';
+
 import 'package:full_app/page/header/headers.dart';
 
+import 'bodyRegister.dart';
 
 
-class FormLogin extends StatefulWidget {
-  const FormLogin({super.key});
+
+class FormRegister extends StatefulWidget {
+  const FormRegister({super.key});
 
   @override
-  State<FormLogin> createState() => _FormLoginState();
+  State<FormRegister> createState() => _FormRegisterState();
 }
 
-class _FormLoginState extends State<FormLogin> {
+class _FormRegisterState extends State<FormRegister> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -24,14 +26,16 @@ class _FormLoginState extends State<FormLogin> {
           child: Center(
             child: Column(
               children: [
-                const Header(name: "Login"),
+                const Header(name: "Register"),
 
                 titleHeader(
                   onTapLogin: (){
-                    setState(() {
                       if(!isLogin){
                         isLogin=!isLogin;
                       }
+                    setState(() {
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context)=>const FormLogin()));
                     });
                   },
                   onTapRegister: (){
@@ -39,17 +43,22 @@ class _FormLoginState extends State<FormLogin> {
                       isLogin=!isLogin;
                     }
                     setState(() {
-                      Navigator.push(context, MaterialPageRoute(
-                        builder: (context)=>const FormRegister()));
                     });
                   },
                 ),
 
-                BodyInputLogin(onTap: (){
-                  setState(() {
-                    isHint=!isHint;
-                  });
-                },),
+                BodyRegister(
+                  onTap: (){
+                    setState(() {
+                      isHint=!isHint;
+                    });
+                  },
+                  onTapCf: (){
+                    setState(() {
+                      isHintCf=!isHintCf;
+                    });
+                  },
+                ),
                 
                 Padding(
                   padding: const EdgeInsets.only(left: 23, right: 30, bottom: 20),
@@ -78,9 +87,9 @@ class _FormLoginState extends State<FormLogin> {
                 buttonWidget(
                   onPressed: (){
                     setState(() {
-                      inputLogin(context: context);
+                      inputRegister(context: context);
                     });},
-                  child:const Text("Login"),
+                  child:const Text("Register"),
                   width: 300.0
                 ),
                 

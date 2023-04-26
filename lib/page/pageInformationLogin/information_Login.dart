@@ -19,7 +19,17 @@ class InformationLogin extends StatelessWidget {
         child: Column(
           children: [
             informationLoginWidget(lable: Email, context: informationController.email.value),
+            const Divider(),
             informationLoginWidget(lable: Password, context: informationController.pass.value),
+            const Divider(),
+            const SizedBox(height: 100,),
+            buttonIconWidget(
+              icon:const Icon(Icons.backpack_outlined), text: "Back", 
+              onPressed: (){
+                Navigator.pop(context);
+              },
+              width: 200.0
+            )
           ],
         )
       ),

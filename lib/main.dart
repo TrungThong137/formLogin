@@ -60,8 +60,11 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   const Text("WellCome My App"),
                   const SizedBox(height: 30,),
-                  buttonWidget(onPressed: (){Get.to(const FormLogin());}, 
-                  child:const Text("next"), icon:const Icon(Icons.arrow_forward), width: 130.0),
+                  buttonWidget(onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context)=> const FormLogin()));
+                  }, 
+                  child:const Text("next"), width: 130.0),
                 ],
               ),
             ),
