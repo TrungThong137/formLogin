@@ -28,7 +28,7 @@ class Footer extends StatelessWidget {
             ),
             buttonSvgWidget(
               onTap: (){}, 
-              img: "assets/p.svg", backGround: Colors.red, 
+              img: "assets/pinterest 1.svg", backGround: Colors.red, 
               width: 27.0
             ),
             buttonSvgWidget(
