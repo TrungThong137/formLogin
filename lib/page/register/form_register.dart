@@ -1,12 +1,17 @@
+
+
 import 'package:flutter/material.dart';
-import 'package:full_app/page/login/footer.dart';
-import 'package:full_app/page/login/login.dart';
+import 'package:full_app/controller/information_controller.dart';
+import 'package:full_app/page/footer/footer.dart';
+import 'package:full_app/page/login/formlogin.dart';
+import 'package:full_app/page/pageInformationLogin/information_Login.dart';
 import 'package:full_app/widget/String.dart';
 import 'package:full_app/widget/widget.dart';
 
 import 'package:full_app/page/header/headers.dart';
+import 'package:get/get.dart';
 
-import 'bodyRegister.dart';
+import 'body_form_register.dart';
 
 
 
@@ -71,14 +76,12 @@ class _FormRegisterState extends State<FormRegister> {
                           textWidget(
                             text:"Remember Password", fontsize: 15.0, 
                             fontWeight: FontWeight.w400,color: Colors.black,
-                            textDecoration: null
                           )
                         ],
                       ),
                       textWidget(
                         text:"Forget Password", fontsize: 15.0, 
                         fontWeight: FontWeight.w400,color: Colors.blue,
-                        textDecoration: null
                       )
                     ],
                   ),
@@ -96,9 +99,8 @@ class _FormRegisterState extends State<FormRegister> {
                 textWidget(
                   text: "or connect with", fontsize: 15.0,
                   fontWeight: FontWeight.w500, color: Colors.grey,
-                  textDecoration: null
                 ),
-                
+      
                 const Footer()
               ],
             ),
@@ -106,5 +108,45 @@ class _FormRegisterState extends State<FormRegister> {
         ),
       ),
     );
+  }
+
+  void inputRegister({required context}){
+    final informationController=Get.put(InformationController());
+    if(emailController.text.length>6 && emailController.text.contains("@")){
+      isEmail=true;
+    }else{
+      isEmail=false;
+    }
+
+    if(passController.text.length>6){
+      isPass=true;
+    }else{
+      isPass=false;
+    }
+
+    if(nameController.text.length>6){
+      informationController.updateInformation(
+        email: emailController.text.obs,
+        pass: passController.text.obs
+      );
+      isName=true;
+    }else{
+      isName=false;
+    }
+
+    if(passConfirmController.text == informationController.pass.value){
+      isPassCf=true;
+    }else{
+      isPassCf=false;
+    }
+
+    if(isEmail && isPass && isPassCf && isName){
+      informationController.updateInformation(
+        email: emailController.text.obs,
+        pass: passController.text.obs
+      );
+      Navigator.push(context, MaterialPageRoute(
+        builder: (context)=> const InformationLogin()));
+    }
   }
 }

@@ -39,17 +39,19 @@ class Footer extends StatelessWidget {
           ],
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 120, left: 170),
+          padding: const EdgeInsets.symmetric(vertical: 160, horizontal: 160),
           child: InkWell(
             onTap: (){},
-            child: Container(
-              width: 70,
-              height: 70,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                // border: Border.all(color: Colors.white),
+            child: Center(
+              child: Container(
+                width: 70,
+                height: 70,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  // border: Border.all(color: Colors.white),
+                ),
+                child: SvgPicture.asset("assets/Frame.svg"),
               ),
-              child: SvgPicture.asset("assets/Frame.svg"),
             ),
           ),
         )

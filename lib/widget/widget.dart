@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:full_app/controller/information_controller.dart';
-import 'package:full_app/page/pageInformationLogin/information_Login.dart';
-import 'package:get/get.dart';
 
 import 'String.dart';
 
@@ -75,7 +72,7 @@ Widget buttonIconWidget({required icon, required text, required onPressed, requi
 }
 
 Widget textWidget({required text, required fontsize,
- required fontWeight, required color, required textDecoration}){
+ required fontWeight, required color,}){
   return Text(
       text,
       style: TextStyle(
@@ -83,13 +80,12 @@ Widget textWidget({required text, required fontsize,
         fontWeight: fontWeight,
         color: color,
       ),
-      textDirection: textDecoration,
   );
 }
 
 Widget textSpanWidget(){
   return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 110, vertical: 10),
+    padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 10),
     child: RichText(
       textAlign: TextAlign.center,
       text:const TextSpan(
@@ -186,7 +182,7 @@ Widget buttonSvgWidget({required onTap, required img,required backGround, requir
 Widget imgWidhet({required img, required fit}){
   return Container(
     width: double.infinity,
-    height: 230,
+    height: 270,
     decoration: BoxDecoration(
       image: DecorationImage(
         image: AssetImage(img),
@@ -206,68 +202,4 @@ Widget informationLoginWidget({required lable, required context}){
       ],
     ),
   );
-}
-
-void inputRegister({required context}){
-  final informationController=Get.put(InformationController());
-  if(emailController.text.length>6 && emailController.text.contains("@")){
-    isEmail=true;
-  }else{
-    isEmail=false;
-  }
-
-  if(passController.text.length>6){
-    isPass=true;
-  }else{
-    isPass=false;
-  }
-
-  if(nameController.text.length>6){
-    informationController.updateInformation(
-      email: emailController.text.obs,
-      pass: passController.text.obs
-    );
-    isName=true;
-  }else{
-    isName=false;
-  }
-
-  if(passConfirmController.text == informationController.pass.value){
-    isPassCf=true;
-  }else{
-    isPassCf=false;
-  }
-
-  if(isEmail && isPass && isPassCf && isName){
-    informationController.updateInformation(
-      email: emailController.text.obs,
-      pass: passController.text.obs
-    );
-    Navigator.push(context, MaterialPageRoute(
-      builder: (context)=> const InformationLogin()));
-  }
-}
-
-void inputLogin({required context}){
-  final informationController=Get.put(InformationController());
-  if(emailController.text.length>6 && emailController.text.contains("@")){
-    isEmail=true;
-  }else{
-    isEmail=false;
-  }
-
-  if(passController.text.length>6){
-    isPass=true;
-  }else{
-    isPass=false;
-  }
-
-  if(isEmail && isPass){
-    informationController.updateInformation(
-      email: emailController.text.obs,
-      pass: passController.text.obs
-    );
-    Navigator.push(context, MaterialPageRoute(
-      builder: (context)=> const InformationLogin()));
-  }
 }

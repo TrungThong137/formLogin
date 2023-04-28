@@ -3,8 +3,9 @@ import 'package:full_app/widget/widget.dart';
 
 
 class Header extends StatelessWidget {
-  const Header({super.key,this.name});
+  const Header({super.key,required this.name, this.color});
   final String ? name;
+  final color;
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +16,7 @@ class Header extends StatelessWidget {
           text:name??"",
           fontWeight: FontWeight.bold,
           fontsize: 30.0,
-          color: Colors.black,
-          textDecoration: null
+          color: color,
         )
       ],
     );

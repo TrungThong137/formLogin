@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:full_app/page/login/login.dart';
+import 'package:full_app/page/login/formlogin.dart';
 import 'package:full_app/widget/widget.dart';
 import 'package:get/get.dart';
 
@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
         theme: ThemeData(primaryColor: Colors.amber),
         home:const HomePage(),
+        debugShowCheckedModeBanner: false,
       );
   }
 }
